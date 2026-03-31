@@ -1,30 +1,31 @@
 # 🛠️ Entorno de Desarrollo 100% Portable (IntelliJ + Git + GitHub CLI)
 
-Este kit te permite llevar un entorno profesional completo en un USB, listo para usar en cualquier PC con Windows sin dejar rastro y manteniendo todas tus herramientas organizadas en un subdirectorio.
+Este kit te permite llevar el entorno de trabajo completo de la cátedra en un USB, listo para usar en cualquier PC con Windows sin dejar rastro y manteniendo todas tus herramientas organizadas en un subdirectorio.
 
 ---
 
 ## 🚀 1. Instalación Inicial
 
-1.  Copia estos archivos a la raíz de tu USB:
-    *   `preparar_usb.bat`
-    *   `Iniciar_Entorno.bat`
-    *   `configurar_git_y_gh.bat`
-    
+### 1.  Copia los archivos de este repositorio a la raíz de tu USB:
+
+- `preparar_usb.bat`
+- `iniciar_entorno.bat`
+- `configurar_git_y_gh.bat`
+- `abrir_terminal.bat`
    
-2.  Descarga y coloca en la misma carpeta los siguientes archivos `.zip`:
+### 2.  Descarga y coloca en la misma carpeta los siguientes archivos `.zip`:
 
-(Renombrá los archivos como está indicados, así el script de inicialización los puede ubicar)
+Renombrá los archivos como está indicados, así el script de inicialización los puede ubicar.
 
-    *   **IntelliJ IDEA**: `intellij.zip` [Windows ZIP](https://www.jetbrains.com/idea/download/?section=windows)
-    *   **Git Portable**: `git.zip` [64-bit Portable](https://git-scm.com/install/windows)
-    *   **Oracle Java 25**: `jdk.zip` [Windows x64 ZIP](https://www.oracle.com/java/technologies/downloads/)
-    *   **GitHub CLI**: `gh.zip` [Windows amd64 ZIP](https://github.com/cli/cli/releases/)
+ -   **IntelliJ IDEA**: `intellij.zip` [Windows ZIP](https://www.jetbrains.com/idea/download/?section=windows)
+ -   **Git Portable**: `git.zip` [64-bit Portable](https://git-scm.com/install/windows)
+ -   **Oracle Java 25**: `jdk.zip` [Windows x64 ZIP](https://www.oracle.com/java/technologies/downloads/)
+ -   **GitHub CLI**: `gh.zip` [Windows amd64 ZIP](https://github.com/cli/cli/releases/)
     
-3.  Ejecuta **`preparar_usb.bat`**. Este script:
-    *   Creará la carpeta `tools/` y `data/`.
-    *   Descomprimirá las herramientas dentro de `tools/`.
-    *   Configurará IntelliJ para usar rutas relativas hacia la carpeta `data/`.
+### 3.  Ejecuta **`preparar_usb.bat`**. Este script:
+ *   Creará la carpeta `tools/` y `data/`.
+ *   Descomprimirá las herramientas dentro de `tools/`.
+ *   Configurará IntelliJ para usar rutas relativas hacia la carpeta `data/`.
 
 > **IMPORTANTE**: GitHub CLI suele extraerse en una subcarpeta (ej: `gh_2.x.x_windows_amd64`). Mueve el contenido de esa subcarpeta directamente a `tools\gh` para que el lanzador funcione.
 
