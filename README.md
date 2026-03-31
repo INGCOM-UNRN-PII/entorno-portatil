@@ -42,9 +42,10 @@ Este script te permitirá:
 ## 💻 3. Uso Diario
 
 Para empezar a trabajar en cualquier PC:
-👉 **`iniciar_entorno.bat`**
+👉 **`Iniciar_Entorno.bat`**: Abre IntelliJ IDEA con todo configurado.
+👉 **`Abrir_Terminal.bat`**: Abre una terminal Git Bash en la carpeta `workspace/`.
 
-Este script prepara el sistema, inyecta las herramientas de la carpeta `tools/` en el `PATH` y abre IntelliJ IDEA.
+Este script prepara el sistema, inyecta las herramientas de la carpeta `tools/` en el `PATH` y abre el entorno seleccionado.
 
 ---
 
