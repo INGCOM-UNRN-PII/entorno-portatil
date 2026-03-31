@@ -15,7 +15,11 @@ echo.
 
 :: 1. Crear estructura de directorios
 echo [+] Creando estructura de carpetas...
-for %%d in (intellij git jdk gh workspace data\idea data\gradle data\gh_config) do (
+if not exist "tools" mkdir "tools"
+for %%d in (intellij git jdk gh) do (
+    if not exist "tools\%%d" mkdir "tools\%%d"
+)
+for %%d in (workspace data\idea data\gradle data\gh_config) do (
     if not exist "%%d" mkdir "%%d"
 )
 
@@ -23,33 +27,37 @@ for %%d in (intellij git jdk gh workspace data\idea data\gradle data\gh_config) 
 echo.
 if exist "%ZIP_IDEA%" (
     echo [+] Descomprimiendo IntelliJ IDEA...
-    powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'intellij' -Force"
+    powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'tools\intellij' -Force"
 )
 if exist "%ZIP_GIT%" (
     echo [+] Descomprimiendo Git Portable...
-    powershell -command "Expand-Archive -Path '%ZIP_GIT%' -DestinationPath 'git' -Force"
+    powershell -command "Expand-Archive -Path '%ZIP_GIT%' -DestinationPath 'tools\git' -Force"
 )
 if exist "%ZIP_JDK%" (
     echo [+] Descomprimiendo JDK...
-    powershell -command "Expand-Archive -Path '%ZIP_JDK%' -DestinationPath 'jdk' -Force"
+    powershell -command "Expand-Archive -Path '%ZIP_JDK%' -DestinationPath 'tools\jdk' -Force"
 )
 if exist "%ZIP_GH%" (
     echo [+] Descomprimiendo GitHub CLI...
-    powershell -command "Expand-Archive -Path '%ZIP_GH%' -DestinationPath 'gh' -Force"
+    powershell -command "Expand-Archive -Path '%ZIP_GH%' -DestinationPath 'tools\gh' -Force"
 )
 
 :: 3. Parche automático de idea.properties
 echo.
 echo [+] Aplicando configuracion de rutas relativas en IntelliJ...
-set "PROP_FILE=intellij\bin\idea.properties"
-if exist "%PROP_FILE%" (
-    powershell -command "(Get-Content '%PROP_FILE%') -replace '# idea.config.path=', 'idea.config.path=${idea.home.path}/../data/idea/config' -replace '# idea.system.path=', 'idea.system.path=${idea.home.path}/../data/idea/system' -replace '# idea.plugins.path=', 'idea.plugins.path=${idea.home.path}/../data/idea/plugins' -replace '# idea.log.path=', 'idea.log.path=${idea.home.path}/../data/idea/log' | Set-Content '%PROP_FILE%'"
-    echo [OK] Archivo idea.properties configurado.
+:: Buscamos el archivo idea.properties dentro de tools\intellij
+for /f "delims=" %%f in ('dir /s /b "tools\intellij\idea.properties" 2^>nul') do set "PROP_FILE=%%f"
+
+if defined PROP_FILE (
+    powershell -command "(Get-Content '%PROP_FILE%') -replace '# idea.config.path=', 'idea.config.path=${idea.home.path}/../../data/idea/config' -replace '# idea.system.path=', 'idea.system.path=${idea.home.path}/../../data/idea/system' -replace '# idea.plugins.path=', 'idea.plugins.path=${idea.home.path}/../../data/idea/plugins' -replace '# idea.log.path=', 'idea.log.path=${idea.home.path}/../../data/idea/log' | Set-Content '%PROP_FILE%'"
+    echo [OK] Archivo idea.properties configurado en: %PROP_FILE%
+) else (
+    echo [!] No se pudo encontrar idea.properties automáticamente. Verifique la carpeta tools\intellij.
 )
 
 echo.
-echo [!] NOTA: GitHub CLI suele extraerse en una subcarpeta (ej: gh_2.x.x_windows_amd64).
-echo     Para que el lanzador funcione, mueve el contenido de esa subcarpeta directamente a la carpeta 'gh' del USB.
+echo [!] NOTA: GitHub CLI suele extraerse en una subcarpeta.
+echo     Mueva el contenido de esa subcarpeta directamente a 'tools\gh'.
 echo.
 echo ====================================================
 echo    PROCESO COMPLETADO

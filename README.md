@@ -1,6 +1,6 @@
-# 🛠️ Manual: Entorno de Desarrollo 100% Portable
+# 🛠️ Entorno de Desarrollo 100% Portable (IntelliJ + Git + GitHub CLI)
 
-Este kit te permite llevar un entorno profesional completo (IntelliJ, Git, GitHub CLI, Java y Gradle) en un USB, listo para usar en cualquier PC con Windows.
+Este kit te permite llevar un entorno profesional completo en un USB, listo para usar en cualquier PC con Windows sin dejar rastro y manteniendo todas tus herramientas organizadas en un subdirectorio.
 
 ---
 
@@ -10,14 +10,23 @@ Este kit te permite llevar un entorno profesional completo (IntelliJ, Git, GitHu
     *   `preparar_usb.bat`
     *   `Iniciar_Entorno.bat`
     *   `configurar_git_y_gh.bat`
+    
+   
 2.  Descarga y coloca en la misma carpeta los siguientes archivos `.zip`:
-    *   **IntelliJ IDEA**: `intellij.zip` (Windows ZIP)[https://www.jetbrains.com/idea/download/?section=windows]
-    *   **Git Portable**: `git.zip` (64-bit Portable)[https://git-scm.com/install/windows]
-    *   **Oracle Java 25**: `jdk.zip` (Windows x64 ZIP)[https://www.oracle.com/java/technologies/downloads/]
-    *   **GitHub CLI**: `gh.zip` (Windows amd64 ZIP)[https://github.com/cli/cli/releases/]
-3.  Ejecuta **`preparar_usb.bat`**. Este script creará las carpetas y descomprimirá todo automáticamente.
 
-> **IMPORTANTE**: GitHub CLI suele extraerse en una subcarpeta (ej: `gh_2.32.1_windows_amd64`). Mueve el contenido de esa subcarpeta directamente a la carpeta `gh` de tu USB para que el lanzador funcione.
+(Renombrá los archivos como está indicados, así el script de inicialización los puede ubicar)
+
+    *   **IntelliJ IDEA**: `intellij.zip` [Windows ZIP](https://www.jetbrains.com/idea/download/?section=windows)
+    *   **Git Portable**: `git.zip` [64-bit Portable](https://git-scm.com/install/windows)
+    *   **Oracle Java 25**: `jdk.zip` [Windows x64 ZIP](https://www.oracle.com/java/technologies/downloads/)
+    *   **GitHub CLI**: `gh.zip` [Windows amd64 ZIP](https://github.com/cli/cli/releases/)
+    
+3.  Ejecuta **`preparar_usb.bat`**. Este script:
+    *   Creará la carpeta `tools/` y `data/`.
+    *   Descomprimirá las herramientas dentro de `tools/`.
+    *   Configurará IntelliJ para usar rutas relativas hacia la carpeta `data/`.
+
+> **IMPORTANTE**: GitHub CLI suele extraerse en una subcarpeta (ej: `gh_2.x.x_windows_amd64`). Mueve el contenido de esa subcarpeta directamente a `tools\gh` para que el lanzador funcione.
 
 ---
 
@@ -26,30 +35,28 @@ Este kit te permite llevar un entorno profesional completo (IntelliJ, Git, GitHu
 Antes de empezar a programar, ejecuta **`configurar_git_y_gh.bat`**. 
 Este script te permitirá:
 1.  Configurar tu **Nombre** y **Email** para tus commits.
-2.  Iniciar sesión en **GitHub** de forma segura (los tokens se guardarán en el USB).
+2.  Iniciar sesión en **GitHub** de forma segura (los tokens se guardarán en el USB en `data\gh_config`).
 
 ---
 
 ## 💻 3. Uso Diario
 
 Para empezar a trabajar en cualquier PC:
-👉 **`Iniciar_Entorno.bat`**
+👉 **`iniciar_entorno.bat`**
 
-Este script prepara el sistema, inyecta las herramientas en el `PATH` y abre IntelliJ IDEA.
+Este script prepara el sistema, inyecta las herramientas de la carpeta `tools/` en el `PATH` y abre IntelliJ IDEA.
 
 ---
 
 ## 📁 Estructura del USB
-*   `intellij/`: El IDE.
-*   `git/`: Binarios de Git.
-*   `jdk/`: Java Development Kit.
-*   `gh/`: GitHub CLI.
-*   `data/`: **Tus configuraciones y secretos.** (Caché de Gradle, Plugins, Perfil de Git, Tokens de GitHub). **¡Mantenla segura!**
-*   `workspace/`: Tus proyectos.
+*   `tools/`: **Contenedor de binarios.** (IntelliJ, Git, JDK, GH).
+*   `data/`: **Tus configuraciones y secretos.** (Caché de Gradle, Plugins, Perfil de Git, Tokens de GitHub). **¡Mantenela segura!**
+*   `workspace/`: Tus proyectos de código.
+*   Scripts raíz: Acceso rápido a las funciones principales.
 
 ---
 
 ## ⚠️ Notas Importantes
-*   **Aislamiento**: Nada de lo que hagas se guardará en la PC host (ni historial de Git, ni credenciales).
-*   **Seguridad**: Si pierdes el USB, cualquier persona podrá acceder a tu cuenta de GitHub si no tienes el USB cifrado (usa BitLocker To Go si es posible).
-*   **Rendimiento**: Usa siempre un puerto **USB 3.0** o superior.
+*   **Aislamiento**: Nada de lo que hagas se guardará en la PC host.
+*   **Seguridad**: Si pierdes el USB, cualquiera con acceso físico podría usar tus credenciales de GitHub si no están cifradas.
+*   **Rendimiento**: Se requiere un puerto **USB 3.0** o superior para una experiencia fluida.

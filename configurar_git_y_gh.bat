@@ -8,10 +8,18 @@ if "%USB_ROOT:~-1%"=="\" set "USB_ROOT=%USB_ROOT:~0,-1%"
 
 :: 2. Configurar entorno portable para esta sesion
 set "DATA_DIR=%USB_ROOT%\data"
+set "TOOLS_DIR=%USB_ROOT%\tools"
 set "HOME=%DATA_DIR%"
 set "USERPROFILE=%DATA_DIR%"
 set "GH_CONFIG_DIR=%DATA_DIR%\gh_config"
-set "PATH=%USB_ROOT%\jdk\bin;%USB_ROOT%\git\cmd;%USB_ROOT%\git\bin;%USB_ROOT%\gh\bin;%PATH%"
+
+:: Definir rutas de herramientas
+set "JAVA_BIN=%TOOLS_DIR%\jdk\bin"
+set "GIT_CMD=%TOOLS_DIR%\git\cmd"
+set "GIT_BIN=%TOOLS_DIR%\git\bin"
+set "GH_BIN=%TOOLS_DIR%\gh\bin"
+
+set "PATH=%JAVA_BIN%;%GIT_CMD%;%GIT_BIN%;%GH_BIN%;%PATH%"
 
 echo ====================================================
 echo    CONFIGURACION DE GIT Y GITHUB (PORTABLE)
