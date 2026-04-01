@@ -35,6 +35,7 @@ echo [+] Configurando Git globalmente en el USB...
 git config --global user.name "%GIT_NAME%"
 git config --global user.email "%GIT_EMAIL%"
 git config --global core.autocrlf true
+git config --global credential.helper ""
 
 echo.
 echo [OK] Git configurado:

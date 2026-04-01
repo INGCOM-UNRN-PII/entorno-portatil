@@ -75,6 +75,19 @@ Los binarios (`tools/`) y proyectos (`workspace/`) **NO** se eliminan.
 
 ---
 
+## 🧹 4. Limpieza de Credenciales (Antes de retirar el USB)
+
+Si usaste el USB en una PC que no es tuya, ejecutá **`limpiar_credenciales.bat`** antes de desconectarlo. Este script elimina cualquier rastro de credenciales de la PC host:
+
+- Configuración y caché de GitHub CLI
+- Git Credential Manager
+- Archivos SSH temporales y known_hosts
+- Caché de credenciales Git en `%TEMP%`
+
+No modifica configuraciones permanentes de la PC, solo borra archivos temporales y caches generados durante la sesión.
+
+---
+
 ## ⚠️ Notas Importantes
 *   **Aislamiento**: Nada de lo que hagas se guardará en la PC host.
 *   **Seguridad**: Si pierdes el USB, cualquiera con acceso físico podría usar tus credenciales de GitHub si no están cifradas. Usa `limpiar_datos.bat` regularmente en computadoras compartidas.

@@ -9,7 +9,7 @@ if "%USB_ROOT:~-1%"=="\" set "USB_ROOT=%USB_ROOT:~0,-1%"
 :: 2. Definir rutas críticas
 set "TOOLS_DIR=%USB_ROOT%\tools"
 set "JAVA_HOME=%TOOLS_DIR%\jdk"
-set "GIT_DIR=%TOOLS_DIR%\git"
+set "GIT_HOME=%TOOLS_DIR%\git"
 set "GH_DIR=%TOOLS_DIR%\gh"
 set "GRADLE_USER_HOME=%USB_ROOT%\data\gradle"
 set "DATA_DIR=%USB_ROOT%\data"
@@ -22,7 +22,7 @@ set "APPDATA=%DATA_DIR%\AppData\Roaming"
 set "LOCALAPPDATA=%DATA_DIR%\AppData\Local"
 
 :: 4. Configurar el PATH (Inyectar herramientas del USB)
-set "PATH=%JAVA_HOME%\bin;%GIT_DIR%\cmd;%GIT_DIR%\bin;%GIT_DIR%\usr\bin;%GH_DIR%\bin;%GH_DIR%;%PATH%"
+set "PATH=%JAVA_HOME%\bin;%GIT_HOME%\cmd;%GIT_HOME%\bin;%GIT_HOME%\usr\bin;%GH_DIR%\bin;%GH_DIR%;%PATH%"
 
 :: 5. Verificación básica en consola
 echo ==========================================
