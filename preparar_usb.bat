@@ -34,28 +34,28 @@ for %%d in (workspace data\idea data\gradle data\gh_config) do (
 
 :: 2. Extracción de herramientas
 echo.
-if defined ZIP_IDEA (
+if not "%ZIP_IDEA%"=="" (
     echo [+] Descomprimiendo IntelliJ IDEA...
     powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'tools\intellij' -Force"
 ) else (
     echo [!] No se encontro archivo intellij*.zip
 )
 
-if defined EXE_GIT (
+if not "%EXE_GIT%"=="" (
     echo [+] Extrayendo Git Portable (autoextraible)...
     "%EXE_GIT%" -o"tools\git" -y
 ) else (
     echo [!] No se encontro archivo PortableGit*.exe
 )
 
-if defined ZIP_JDK (
+if not "%ZIP_JDK%"=="" (
     echo [+] Descomprimiendo JDK...
     powershell -command "Expand-Archive -Path '%ZIP_JDK%' -DestinationPath 'tools\jdk' -Force"
 ) else (
     echo [!] No se encontro archivo jdk*.zip
 )
 
-if defined ZIP_GH (
+if not "%ZIP_GH%"=="" (
     echo [+] Descomprimiendo GitHub CLI...
     powershell -command "Expand-Archive -Path '%ZIP_GH%' -DestinationPath 'tools\gh' -Force"
 ) else (
