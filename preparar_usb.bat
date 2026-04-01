@@ -30,7 +30,7 @@ if exist "%ZIP_IDEA%" (
     powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'tools\intellij' -Force"
 )
 if exist "%EXE_GIT%" (
-    echo [+] Extrayendo Git Portable (autoextraible)...
+    echo [+] Extrayendo Git Portable
     "%EXE_GIT%" -o"tools\git" -y
 ) else (
     echo [!] No se encontro %EXE_GIT%. Descargalo desde git-scm.com
@@ -51,7 +51,7 @@ echo [+] Aplicando configuracion de rutas relativas en IntelliJ...
 for /f "delims=" %%f in ('dir /s /b "tools\intellij\idea.properties" 2^>nul') do set "PROP_FILE=%%f"
 
 if defined PROP_FILE (
-    powershell -command "(Get-Content '%PROP_FILE%') -replace '# idea.config.path=', 'idea.config.path=${idea.home.path}/../../data/idea/config' -replace '# idea.system.path=', 'idea.system.path=${idea.home.path}/../../data/idea/system' -replace '# idea.plugins.path=', 'idea.plugins.path=${idea.home.path}/../../data/idea/plugins' -replace '# idea.log.path=', 'idea.log.path=${idea.home.path}/../../data/idea/log' | Set-Content '%PROP_FILE%'"
+    powershell -command "(Get-Content '%PROP_FILE%') -replace '^#\s*idea\.config\.path=.*', 'idea.config.path=${idea.home.path}/../../data/idea/config' -replace '^#\s*idea\.system\.path=.*', 'idea.system.path=${idea.home.path}/../../data/idea/system' -replace '^#\s*idea\.plugins\.path=.*', 'idea.plugins.path=${idea.home.path}/../../data/idea/plugins' -replace '^#\s*idea\.log\.path=.*', 'idea.log.path=${idea.home.path}/../../data/idea/log' | Set-Content '%PROP_FILE%'"
     echo [OK] Archivo idea.properties configurado en: %PROP_FILE%
 ) else (
     echo [!] No se pudo encontrar idea.properties automáticamente. Verifique la carpeta tools\intellij.

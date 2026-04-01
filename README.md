@@ -18,7 +18,7 @@ Este kit te permite llevar el entorno de trabajo completo de la cátedra en un U
 Renombrá los archivos como está indicados, así el script de inicialización los puede ubicar.
 
  -   **IntelliJ IDEA**: `intellij.zip` [Windows ZIP](https://www.jetbrains.com/idea/download/?section=windows)
- -   **Git Portable**: `git.zip` [64-bit Portable](https://git-scm.com/install/windows)
+ -   **Git Portable**: `PortableGit.exe` [64-bit Portable](https://git-scm.com/install/windows)
  -   **Oracle Java 25**: `jdk.zip` [Windows x64 ZIP](https://www.oracle.com/java/technologies/downloads/)
  -   **GitHub CLI**: `gh.zip` [Windows amd64 ZIP](https://github.com/cli/cli/releases/)
     
