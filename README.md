@@ -29,9 +29,8 @@ Los archivos se detectan automáticamente por su nombre. Solo asegurate que empi
 ### 3.  Ejecuta **`preparar_usb.bat`**. Este script:
  *   Creará la carpeta `tools/` y `data/`.
  *   Descomprimirá las herramientas dentro de `tools/`.
+ *   Reorganizará automáticamente la estructura de GitHub CLI.
  *   Configurará IntelliJ para usar rutas relativas hacia la carpeta `data/`.
-
-> **IMPORTANTE**: GitHub CLI suele extraerse en una subcarpeta (ej: `gh_2.x.x_windows_amd64`). Mueve el contenido de esa subcarpeta directamente a `tools\gh` para que el lanzador funcione.
 
 ---
 

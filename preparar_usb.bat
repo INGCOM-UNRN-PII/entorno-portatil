@@ -57,7 +57,16 @@ if not "%ZIP_JDK%"=="" (
 
 if not "%ZIP_GH%"=="" (
     echo [+] Descomprimiendo GitHub CLI...
-    powershell -command "Expand-Archive -Path '%ZIP_GH%' -DestinationPath 'tools\gh' -Force"
+    powershell -command "Expand-Archive -Path '%ZIP_GH%' -DestinationPath 'tools\gh_temp' -Force"
+    
+    :: Mover el contenido de la subcarpeta a tools\gh
+    echo [+] Reorganizando estructura de GitHub CLI...
+    for /d %%d in (tools\gh_temp\gh_*) do (
+        xcopy "%%d\*" "tools\gh\" /E /I /Y >nul 2>&1
+    )
+    
+    :: Limpiar carpeta temporal
+    rmdir /s /q "tools\gh_temp" 2>nul
 ) else (
     echo [!] No se encontro archivo gh*.zip
 )
@@ -75,9 +84,6 @@ if defined PROP_FILE (
     echo [!] No se pudo encontrar idea.properties automáticamente. Verifique la carpeta tools\intellij.
 )
 
-echo.
-echo [!] NOTA: GitHub CLI suele extraerse en una subcarpeta.
-echo     Mueva el contenido de esa subcarpeta directamente a 'tools\gh'.
 echo.
 echo ====================================================
 echo    PROCESO COMPLETADO
