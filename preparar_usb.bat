@@ -11,7 +11,7 @@ echo.
 echo [+] Detectando archivos descargados...
 
 :: Buscar archivos por patrón
-for %%f in (intellij*.zip) do set "ZIP_IDEA=%%f"
+for %%f in (idea*.zip) do set "ZIP_IDEA=%%f"
 for %%f in (PortableGit*.exe) do set "EXE_GIT=%%f"
 for %%f in (jdk*.zip) do set "ZIP_JDK=%%f"
 for %%f in (gh*.zip) do set "ZIP_GH=%%f"
