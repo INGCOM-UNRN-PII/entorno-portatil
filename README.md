@@ -52,6 +52,21 @@ Este script prepara el sistema, inyecta las herramientas de la carpeta `tools/` 
 
 ---
 
+## 🧹 4. Limpieza de Datos (Computadora Compartida)
+
+Si usas el USB en una computadora compartida y quieres eliminar tus datos personales:
+👉 **`limpiar_datos.bat`**: Elimina configuraciones, tokens, caché y historial.
+
+**⚠️ IMPORTANTE**: Este script elimina:
+- Configuración de Git (nombre y email)
+- Tokens de autenticación de GitHub
+- Caché de Gradle y plugins de IntelliJ
+- Historial de terminal y configuraciones personales
+
+Los binarios (`tools/`) y proyectos (`workspace/`) **NO** se eliminan.
+
+---
+
 ## 📁 Estructura del USB
 *   `tools/`: **Contenedor de binarios.** (IntelliJ, Git, JDK, GH).
 *   `data/`: **Tus configuraciones y secretos.** (Caché de Gradle, Plugins, Perfil de Git, Tokens de GitHub). **¡Mantenela segura!**
@@ -62,5 +77,6 @@ Este script prepara el sistema, inyecta las herramientas de la carpeta `tools/` 
 
 ## ⚠️ Notas Importantes
 *   **Aislamiento**: Nada de lo que hagas se guardará en la PC host.
-*   **Seguridad**: Si pierdes el USB, cualquiera con acceso físico podría usar tus credenciales de GitHub si no están cifradas.
+*   **Seguridad**: Si pierdes el USB, cualquiera con acceso físico podría usar tus credenciales de GitHub si no están cifradas. Usa `limpiar_datos.bat` regularmente en computadoras compartidas.
 *   **Rendimiento**: Se requiere un puerto **USB 3.0** o superior para una experiencia fluida.
+*   **Computadora Compartida**: Ejecuta `limpiar_datos.bat` antes de desconectar el USB para eliminar tus datos personales.
