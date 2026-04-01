@@ -55,7 +55,7 @@ Este script prepara el sistema, inyecta las herramientas de la carpeta `tools/` 
 
 ## 🧹 4. Limpieza de Datos (Computadora Compartida)
 
-Si usas el USB en una computadora compartida y quieres eliminar tus datos personales:
+Si usas esta herramienta en un directorio de una computadora compartida y quieres eliminar tus datos personales:
 👉 **`limpiar_datos.bat`**: Elimina configuraciones, tokens, caché y historial.
 
 **⚠️ IMPORTANTE**: Este script elimina:
